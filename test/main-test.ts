@@ -15,7 +15,8 @@ let LootContract: LootSwords;
 describe('Greeter', function () {
   it("Should return the new greeting once it's changed", async function () {
     const Greeter = await ethers.getContractFactory('LootSwords');
-    const greeter = await Greeter.deploy('Hello, world!');
-    await greeter.deployed();
+    LootContract = (await Greeter.deploy()) as LootSwords;
+    await LootContract.deployed();
+    console.log(await LootContract.tokenURI(5));
   });
 });
